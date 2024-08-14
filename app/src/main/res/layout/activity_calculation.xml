@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#80E48686"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/editTextCylinderDiameter"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:autofillHints=""
+        android:hint="@string/cylinder_diameter"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/editTextMachineGauge"
+        android:layout_width="wrap_content"
+        android:layout_height="59dp"
+        android:autofillHints=""
+        android:hint="@string/machine_gauge"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/editTextFabricGSM"
+        android:layout_width="127dp"
+        android:layout_height="57dp"
+        android:autofillHints=""
+        android:hint="@string/fabric_gsm"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/editTextFabricWidth"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:autofillHints=""
+        android:hint="@string/fabric_width"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/editTextYarnCount"
+        android:layout_width="wrap_content"
+        android:layout_height="61dp"
+        android:autofillHints=""
+        android:hint="@string/yarn_count"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/editTextStitchLength"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:autofillHints=""
+        android:hint="@string/stitch_length"
+        android:inputType="numberDecimal" />
+
+    <Button
+        android:id="@+id/buttonCalculate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/calculate" />
+
+    <TextView
+        android:id="@+id/textViewResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/buttonClear"
+        android:layout_width="104dp"
+        android:layout_height="wrap_content"
+        android:text="@string/clear" />
+</LinearLayout>

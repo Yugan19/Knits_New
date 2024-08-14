@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name" translatable="false">Knits</string>
+    <string name="single_jersey" translatable="false">Single Jersey</string>
+    <string name="RIB">Single Jersey</string>
+    <string name="rib">1X1 RIB</string>
+    <string name="interlock">Interlock</string>
+    <string name="image_of_knitting">image of knitting</string>
+    <string name="cylinder_diameter">Cylinder Diameter</string>
+    <string name="machine_gauge">Machine Gauge</string>
+    <string name="fabric_gsm">Fabric GSM</string>
+    <string name="fabric_width">Fabric Width</string>
+    <string name="yarn_count">Yarn Count</string>
+    <string name="stitch_length">Stitch Length</string>
+    <string name="calculate">Calculate</string>
+    <string name="clear">Clear</string>
+    <string name="wales_per_inch">Wales per Inch</string>
+    <string name="please_fill_in_all_fields_with_valid_numbers">Please fill in all fields with valid numbers.</string>
+</resources>
+
