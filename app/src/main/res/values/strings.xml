@@ -15,5 +15,11 @@
     <string name="clear">Clear</string>
     <string name="wales_per_inch">Wales per Inch</string>
     <string name="please_fill_in_all_fields_with_valid_numbers">Please fill in all fields with valid numbers.</string>
+    <string name="calc_method">Calc Method</string>
+    <string name="yarn_measurements">Yarn Measurements</string>
+    <string name="english">English</string>
+    <string name="denier">Denier</string>
+    <string name="welcome_to_knits_app">Welcome to Knits App</string>
+    <string name="click_here_to_go_calculation_page">Click here to go Calculation Page</string>
 </resources>
 

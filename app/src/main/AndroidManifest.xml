@@ -10,13 +10,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light"
+        android:theme="@style/Theme.MaterialComponents.Light"
         tools:targetApi="31">
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.AppCompat.Light">
+            android:theme="@style/Theme.MaterialComponents.Light">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,23 +24,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".RIB_Activity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.AppCompat.Light">
-                    </activity>
-        <activity
             android:name=".SJ_Activity"
             android:exported="true"
             android:label="Knits"
             android:theme="@style/Theme.MaterialComponents.Light">
-        </activity>
-
-        <activity
-            android:name=".Interlock_Activity"
-            android:exported="true"
-            android:label="Knits"
-            android:theme="@style/Theme.AppCompat.Light">
         </activity>
 
     </application>
