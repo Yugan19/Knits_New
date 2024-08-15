@@ -29,6 +29,12 @@
             android:label="@string/app_name"
             android:theme="@style/Theme.AppCompat.Light">
                     </activity>
+        <activity
+            android:name=".singlejersey_Activity"
+            android:exported="true"
+            android:label="Knits"
+            android:theme="@style/Theme.AppCompat.Light">
+        </activity>
     </application>
 
 </manifest>
