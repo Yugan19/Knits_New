@@ -87,7 +87,7 @@ class SJ_Activity : AppCompatActivity() {
             }
 
             var yarnCountCalc = yarnCount
-            if(englishRadioButton.isChecked){
+            if(!englishRadioButton.isChecked){
                 yarnCountCalc = 5315/yarnCount
             }
             val cpi = (fabricGSM * yarnCountCalc * multiplyFactor) / (wpi * stitchLength)
