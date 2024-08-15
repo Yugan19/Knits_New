@@ -30,11 +30,19 @@
             android:theme="@style/Theme.AppCompat.Light">
                     </activity>
         <activity
-            android:name=".singlejersey_Activity"
+            android:name=".SJ_Activity"
+            android:exported="true"
+            android:label="Knits"
+            android:theme="@style/Theme.MaterialComponents.Light">
+        </activity>
+
+        <activity
+            android:name=".Interlock_Activity"
             android:exported="true"
             android:label="Knits"
             android:theme="@style/Theme.AppCompat.Light">
         </activity>
+
     </application>
 
 </manifest>
