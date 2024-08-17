@@ -21,5 +21,10 @@
     <string name="denier">Denier</string>
     <string name="welcome_to_knits_app">Welcome to Knits App</string>
     <string name="click_here_to_go_calculation_page">Click here to go Calculation Page</string>
+    <string name="yarn_measurement_unit">Yarn Measurement Unit</string>
+    <string name="binder_yarn_count">Binder Yarn Count</string>
+    <string name="binder_stitch_count">Binder Stitch Count</string>
+    <string name="fleece_yarn_count">Fleece Yarn Count</string>
+    <string name="fleece_stitch_count">Fleece Stitch Count</string>
 </resources>
 

@@ -6,36 +6,51 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.internal.TextDrawableHelper
+import com.google.android.material.internal.TextDrawableHelper.TextDrawableDelegate
 import com.google.android.material.radiobutton.MaterialRadioButton
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
+import org.w3c.dom.Text
 
 class SJ_Activity : AppCompatActivity() {
-    private lateinit var editTextCylinderDiameter: EditText
-    private lateinit var editTextMachineGauge: EditText
-    private lateinit var editTextFabricGSM: EditText
-    private lateinit var editTextFabricWidth: EditText
-    private lateinit var editTextYarnCount: EditText
-    private lateinit var editTextStitchLength: EditText
-    private lateinit var buttonClear: Button
-    private lateinit var buttonCalculate: Button
+    private lateinit var editTextCylinderDiameter: TextInputEditText
+    private lateinit var editTextMachineGauge: TextInputEditText
+    private lateinit var editTextFabricGSM: TextInputEditText
+    private lateinit var editTextFabricWidth: TextInputEditText
+    private lateinit var editTextYarnCount: TextInputEditText
+    private lateinit var editTextStitchLength: TextInputEditText
+    private lateinit var buttonClear: MaterialButton
+    private lateinit var buttonCalculate: MaterialButton
     private lateinit var menuAutomcompleteTextview: MaterialAutoCompleteTextView
-    private lateinit var radioGroup: RadioGroup
-    private lateinit var englishRadioButton: MaterialRadioButton
-    private lateinit var fleeceOptionsLayout: LinearLayout
+    private lateinit var yarnCountLayout: TextInputLayout
+    private lateinit var binderYarnCountLayout: TextInputLayout
+    private lateinit var fleeceYarnCountLayout: TextInputLayout
+    private lateinit var binderStitchCountLayout: TextInputLayout
+    private lateinit var fleeceStitchCountLayout: TextInputLayout
+
+    private var yarncountMethod = "english"
+    private var binderYarnMethod = "english"
+    private var fleeceYarnMethod = "english"
+
 
     // New fields for 3T/2T Fleece
-    private lateinit var editTextBinderYarnCount: EditText
-    private lateinit var editTextFleeceYarnCount: EditText
-    private lateinit var editTextBinderStitchLength: EditText
-    private lateinit var editTextFleeceStitchLength: EditText
-    private lateinit var radioGroupBinderYarn: RadioGroup
-    private lateinit var radioGroupFleeceYarn: RadioGroup
-    private lateinit var binderEnglishRadioButton: MaterialRadioButton
-    private lateinit var fleeceEnglishRadioButton: MaterialRadioButton
+    private lateinit var editTextBinderYarnCount: TextInputEditText
+    private lateinit var editTextFleeceYarnCount: TextInputEditText
+    private lateinit var editTextBinderStitchLength: TextInputEditText
+    private lateinit var editTextFleeceStitchLength: TextInputEditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_singlejersey)
+
+        yarnCountLayout = findViewById(R.id.yarnCountLayout)
+        binderYarnCountLayout = findViewById(R.id.binderYarnCountLayout)
+        fleeceYarnCountLayout = findViewById(R.id.fleeceYarnCountLayout)
+        binderStitchCountLayout = findViewById(R.id.binderStitchLayout)
+        fleeceStitchCountLayout = findViewById(R.id.fleeceStitchLayout)
 
         // Initialize standard fields
         menuAutomcompleteTextview = findViewById(R.id.menuAutocompleteTextview)
@@ -45,6 +60,7 @@ class SJ_Activity : AppCompatActivity() {
         menuAutomcompleteTextview.setText("Single Jersey", false)
 
         editTextCylinderDiameter = findViewById(R.id.editTextCylinderDiameter)
+
         editTextMachineGauge = findViewById(R.id.editTextMachineGauge)
         editTextFabricGSM = findViewById(R.id.editTextFabricGSM)
         editTextFabricWidth = findViewById(R.id.editTextFabricWidth)
@@ -53,29 +69,17 @@ class SJ_Activity : AppCompatActivity() {
 
         buttonClear = findViewById(R.id.buttonClear)
         buttonCalculate = findViewById(R.id.buttonCalculate)
-        radioGroup = findViewById(R.id.radioGroup)
-        englishRadioButton = findViewById(R.id.radio_button_1)
-        englishRadioButton.isChecked = true
-
-        // Initialize fleece options
-        fleeceOptionsLayout = findViewById(R.id.fleeceOptionsLayout)
         editTextBinderYarnCount = findViewById(R.id.editTextBinderYarnCount)
         editTextFleeceYarnCount = findViewById(R.id.editTextFleeceYarnCount)
         editTextBinderStitchLength = findViewById(R.id.editTextBinderStitchLength)
         editTextFleeceStitchLength = findViewById(R.id.editTextFleeceStitchLength)
-        radioGroupBinderYarn = findViewById(R.id.radioGroupBinderYarn)
-        radioGroupFleeceYarn = findViewById(R.id.radioGroupFleeceYarn)
-        binderEnglishRadioButton = findViewById(R.id.radio_button_binder_english)
-        fleeceEnglishRadioButton = findViewById(R.id.radio_button_fleece_english)
-        binderEnglishRadioButton.isChecked = true
-        fleeceEnglishRadioButton.isChecked = true
 
         menuAutomcompleteTextview.setOnItemClickListener { _, _, position, _ ->
             val selectedOption = adapter.getItem(position)
             if (selectedOption == "3T/2T FLeece") {
-                fleeceOptionsLayout.visibility = View.VISIBLE
+                showExtraFields()
             } else {
-                fleeceOptionsLayout.visibility = View.GONE
+                hideExtraFields()
             }
         }
 
@@ -86,6 +90,41 @@ class SJ_Activity : AppCompatActivity() {
         buttonClear.setOnClickListener {
             clearFields()
         }
+
+        yarnCountLayout.setEndIconOnClickListener {
+            if(yarncountMethod.equals("english")) {
+                yarnCountLayout.setEndIconDrawable(R.drawable.ic_denier_foreground)
+                yarncountMethod = "denier"
+            }
+            else {
+                yarnCountLayout.setEndIconDrawable(R.drawable.ic_english_foreground)
+                yarncountMethod = "english"
+            }
+        }
+
+        binderYarnCountLayout.setEndIconOnClickListener {
+            if(binderYarnMethod.equals("english")) {
+                binderYarnCountLayout.setEndIconDrawable(R.drawable.ic_denier_foreground)
+                binderYarnMethod = "denier"
+            }
+            else {
+                binderYarnCountLayout.setEndIconDrawable(R.drawable.ic_english_foreground)
+                binderYarnMethod = "english"
+            }
+        }
+
+        fleeceYarnCountLayout.setEndIconOnClickListener {
+            if(fleeceYarnMethod.equals("english")) {
+                fleeceYarnCountLayout.setEndIconDrawable(R.drawable.ic_denier_foreground)
+                fleeceYarnMethod = "denier"
+            }
+            else {
+                fleeceYarnCountLayout.setEndIconDrawable(R.drawable.ic_english_foreground)
+                fleeceYarnMethod = "english"
+            }
+        }
+
+
     }
 
     @SuppressLint("SetTextI18n", "DefaultLocale")
@@ -114,13 +153,13 @@ class SJ_Activity : AppCompatActivity() {
                 var fleeceYarnCountCalc = fleeceYarnCount
 
                 // Conversion for Denier if applicable
-                if (!englishRadioButton.isChecked) {
+                if (!yarncountMethod.equals("english")) {
                     yarnCountCalc = 5315 / yarnCount
                 }
-                if (!binderEnglishRadioButton.isChecked) {
+                if (!binderYarnMethod.equals("english")) {
                     binderYarnCountCalc = 5315 / binderYarnCount
                 }
-                if (!fleeceEnglishRadioButton.isChecked) {
+                if (!fleeceYarnMethod.equals("english")) {
                     fleeceYarnCountCalc = 5315 / fleeceYarnCount
                 }
 
@@ -133,7 +172,7 @@ class SJ_Activity : AppCompatActivity() {
                 }
 
                 var yarnCountCalc = yarnCount
-                if (!englishRadioButton.isChecked) {
+                if (!yarncountMethod.equals("english")) {
                     yarnCountCalc = 5315 / yarnCount
                 }
 
@@ -178,9 +217,28 @@ class SJ_Activity : AppCompatActivity() {
         editTextBinderStitchLength.setText("")
         editTextFleeceStitchLength.setText("")
         menuAutomcompleteTextview.setText("Single Jersey", false)
-        englishRadioButton.isChecked = true
-        binderEnglishRadioButton.isChecked = true
-        fleeceEnglishRadioButton.isChecked = true
-        fleeceOptionsLayout.visibility = View.GONE
+        yarnCountLayout.setEndIconDrawable(R.drawable.ic_english_foreground)
+        yarncountMethod = "english"
+        binderYarnCountLayout.setEndIconDrawable(R.drawable.ic_english_foreground)
+        binderYarnMethod = "english"
+        fleeceYarnCountLayout.setEndIconDrawable(R.drawable.ic_english_foreground)
+        fleeceYarnMethod = "english"
+        hideExtraFields()
     }
+
+    private fun showExtraFields() {
+        binderYarnCountLayout.visibility = View.VISIBLE
+        binderStitchCountLayout.visibility = View.VISIBLE
+        fleeceYarnCountLayout.visibility = View.VISIBLE
+        fleeceStitchCountLayout.visibility = View.VISIBLE
+    }
+
+    private fun hideExtraFields() {
+        binderYarnCountLayout.visibility = View.GONE
+        binderStitchCountLayout.visibility = View.GONE
+        fleeceYarnCountLayout.visibility = View.GONE
+        fleeceStitchCountLayout.visibility = View.GONE
+    }
+
+
 }
