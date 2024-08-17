@@ -163,6 +163,83 @@
             android:layout_marginStart="10dp"
             android:text="@string/clear" />
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/fleeceOptionsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <!-- Binder Yarn Count -->
+        <EditText
+            android:id="@+id/editTextBinderYarnCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Binder Yarn Count"
+            android:inputType="numberDecimal" />
+
+        <!-- Binder Yarn Count Unit -->
+        <RadioGroup
+            android:id="@+id/radioGroupBinderYarn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/radio_button_binder_english"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="English Count"
+                android:checked="true" />
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/radio_button_binder_denier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Denier" />
+        </RadioGroup>
+
+        <!-- Fleece Yarn Count -->
+        <EditText
+            android:id="@+id/editTextFleeceYarnCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Fleece Yarn Count"
+            android:inputType="numberDecimal" />
+
+        <!-- Fleece Yarn Count Unit -->
+        <RadioGroup
+            android:id="@+id/radioGroupFleeceYarn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/radio_button_fleece_english"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="English Count"
+                android:checked="true" />
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/radio_button_fleece_denier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Denier" />
+        </RadioGroup>
+
+        <!-- Binder Stitch Length -->
+        <EditText
+            android:id="@+id/editTextBinderStitchLength"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Binder Stitch Length"
+            android:inputType="numberDecimal" />
+
+        <!-- Fleece Stitch Length -->
+        <EditText
+            android:id="@+id/editTextFleeceStitchLength"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Fleece Stitch Length"
+            android:inputType="numberDecimal" />
+    </LinearLayout>
 
 
 
